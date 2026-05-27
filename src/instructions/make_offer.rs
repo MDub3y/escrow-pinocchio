@@ -41,7 +41,7 @@ pub fn process_make_offer(
     }
 
     let rent = pinocchio::sysvars::rent::Rent::get()?;
-    let lamports_required = rent.try_minimum_balance(crate::state::Offer::LEN)?;
+    let lamports_required = rent.try_minimum_balance(crate::state::Offer::LEN)? * 2;
 
     let id_bytes = args.id.to_le_bytes();
     let bump_slice = core::slice::from_ref(&bump);

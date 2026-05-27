@@ -2,14 +2,14 @@
 
 use pinocchio::{
     AccountView, Address, ProgramResult, default_panic_handler, error::ProgramError, no_allocator,
-    program_entrypoint,
+    nostd_panic_handler, program_entrypoint,
 };
 
 pub mod instructions;
 pub mod state;
 
 program_entrypoint!(process_instruction);
-default_panic_handler!();
+nostd_panic_handler!();
 no_allocator!();
 
 pub fn process_instruction(
