@@ -102,7 +102,7 @@ describe("Pinocchio Escrow Integration Tests", () => {
             createMintToInstruction(tokenMintB.publicKey, takerTokenAccountB, maker.publicKey, 5_000_000n)
         );
 
-        setupTx.sign(maker, taker, tokenMintA, tokenMintB);
+        setupTx.sign(maker, tokenMintA, tokenMintB);
         svm.sendTransaction(setupTx);
     });
 
@@ -149,7 +149,7 @@ describe("Pinocchio Escrow Integration Tests", () => {
             throw new Error(`Transaction failed: ${txMetadata.toString()}`);
         }
 
-        console.log(`CU Consumed: ${txMetadata.computeUnitsConsumed()}`);
+        console.log(`CU Consumed (Make Offer): ${txMetadata.computeUnitsConsumed()}`);
 
         const offerAccount = svm.getAccount(offerPda);
         expect(offerAccount).toBeDefined();
